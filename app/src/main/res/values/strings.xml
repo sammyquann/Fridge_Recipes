@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">Fridge_Recipes</string>
+    <string name="header_recipe">What's In Your Fridge?</string>
+    <string name="recipe_add_button">Add</string>
     <string name="nav_title_recipe">Recipe</string>
     <string name="nav_title_favorites">Favorites</string>
     <string name="nav_title_profiles">Profiles</string>
