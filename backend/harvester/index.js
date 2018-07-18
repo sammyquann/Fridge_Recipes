@@ -14,6 +14,15 @@ async function run() {
     for (let idx = 0; idx < recipe_count; idx++) {
         let link = "#slide-" + idx + " > div.slideshow-slide-content > div.slideshow-slide-dek > p:nth-child(3) > a";
         await page.click(link);
+        await page.waitForNavigation();
+        
+        let ingredient_list_selector = "body > div.site-content > div.content-container.recipe-container > div.recipe-body > div.recipe-wrapper > div.ingredients > div.ingredients-body > div > div.ingredient-lists";
+        
+        let ingredient_list = await page.evaluate((sel) => {
+            return document.querySelector(sel).getAttribute('href').replace('/', '');
+        }, ingredient_list_selector);
+
+        console.log(ingredient_list);
     }
 
     /*
