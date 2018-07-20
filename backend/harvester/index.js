@@ -12,17 +12,29 @@ async function run() {
     await page.goto(url);
 
     for (let idx = 0; idx < recipe_count; idx++) {
+        //await page.evaluate();
+        console.log("1");
+        //await page.waitForNavigation();
+        console.log("2")
         let link = "#slide-" + idx + " > div.slideshow-slide-content > div.slideshow-slide-dek > p:nth-child(3) > a";
         await page.click(link);
-        await page.waitForNavigation();
+        console.log("clicked");
+        // let ingredient_list = await page.evaluate(() => document.getElementsByClassName("ingredient-lists"));
+        // console.log(ingredient_list);
         
         let ingredient_list_selector = "body > div.site-content > div.content-container.recipe-container > div.recipe-body > div.recipe-wrapper > div.ingredients > div.ingredients-body > div > div.ingredient-lists";
-        
-        let ingredient_list = await page.evaluate((sel) => {
-            return document.querySelector(sel).getAttribute('href').replace('/', '');
-        }, ingredient_list_selector);
 
-        console.log(ingredient_list);
+        let list = await page.evaluate((sel) => {
+            return console.log(sel);
+            //return document.querySelector(sel).getAttribute('href').replace('/', '');
+        }, ingredient_list_selector);
+        console.log(list);
+
+        // let ingredient_list = await page.evaluate((sel) => {
+        //     return document.querySelector(sel).getAttribute('href').replace('/', '');
+        // }, ingredient_list_selector);
+
+        // console.log(ingredient_list);
     }
 
     /*
