@@ -6,36 +6,60 @@ async function run() {
     });
     const page = await browser.newPage();
 
-    let url = "https://www.delish.com/cooking/g2150/comfort-food/?slide=1";
+    //let url = "https://www.delish.com/cooking/g2150/comfort-food/?slide=1";
+    let url = "https://www.delish.com/cooking/recipe-ideas/recipes/a53695/one-pot-chicken-alfredo-recipe/";
     let recipe_count = 5;
 
     await page.goto(url);
+    console.log(browser.document);
+    await page.evaluate(() => {
+        const inputElement = document.getElementsByClassName('ingredient-lists');
+        console.log(inputElement);
+    });
 
-    for (let idx = 0; idx < recipe_count; idx++) {
-        //await page.evaluate();
-        console.log("1");
-        //await page.waitForNavigation();
-        console.log("2")
-        let link = "#slide-" + idx + " > div.slideshow-slide-content > div.slideshow-slide-dek > p:nth-child(3) > a";
-        await page.click(link);
-        console.log("clicked");
-        // let ingredient_list = await page.evaluate(() => document.getElementsByClassName("ingredient-lists"));
-        // console.log(ingredient_list);
+
+    // for (let idx = 0; idx < recipe_count; idx++) {
+    //     //await page.evaluate();
+    //     console.log("1");
+    //     //await page.waitForNavigation();
+    //     console.log("2")
+    //     let link = "#slide-" + idx + " > div.slideshow-slide-content > div.slideshow-slide-dek > p:nth-child(3) > a";
+    //     await page.click(link);
+    //     console.log("clicked");
+    //     // let ingredient_list = await page.evaluate(() => document.getElementsByClassName("ingredient-lists"));
+    //     // console.log(ingredient_list);
+    //     let pages = await browser.pages();
+    //     console.log("page loaded");
+
+    //     //await page.waitForSelector("body > div.site-content > div.content-container.recipe-container > div.recipe-body > div.recipe-wrapper > div.ingredients > div.ingredients-body > div > div.ingredient-lists")
+    //     let test = await page.evaluate(() => document.querySelector('span').innerContent);
+    //     console.log(test);
+
+    //     // let ingredient_list = document.getElementsByClassName('ingredient-lists');
+    //     // console.log(ingredient_list);
         
-        let ingredient_list_selector = "body > div.site-content > div.content-container.recipe-container > div.recipe-body > div.recipe-wrapper > div.ingredients > div.ingredients-body > div > div.ingredient-lists";
+    //     // let ingredient_list_selector = "body > div.site-content > div.content-container.recipe-container > div.recipe-body > div.recipe-wrapper";
+    //     // let list = [];
+    //     // for (let i=0; i<pages.length; i++) {
+    //     //     let curr = await pages[i].evaluate((sel) => {
+    //     //         try {
+    //     //             let html = document.querySelector(sel).innerHTML;
+    //     //             return html;
+    //     //         }
+    //     //         catch (err) {
+    //     //             console.log("no innerHTML at index.");
+    //     //         }
+    //     //     }, ingredient_list_selector);
+    //     //     list.push(curr);
+    //     // }
+    //     // console.log(list);
 
-        let list = await page.evaluate((sel) => {
-            return console.log(sel);
-            //return document.querySelector(sel).getAttribute('href').replace('/', '');
-        }, ingredient_list_selector);
-        console.log(list);
+    //     // let ingredient_list = await page.evaluate((sel) => {
+    //     //     return document.querySelector(sel).getAttribute('href').replace('/', '');
+    //     // }, ingredient_list_selector);
 
-        // let ingredient_list = await page.evaluate((sel) => {
-        //     return document.querySelector(sel).getAttribute('href').replace('/', '');
-        // }, ingredient_list_selector);
-
-        // console.log(ingredient_list);
-    }
+    //     // console.log(ingredient_list);
+    // }
 
     /*
 
